@@ -1,3 +1,5 @@
+package com.example.zeta.wingsapp;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -16,8 +18,12 @@ public class baseDeDatos extends SQLiteOpenHelper
     @Override
     public void onCreate (SQLiteDatabase BDD)
     {
-        String queryTablaAlumnos = "create table alumnos (id integer primary key, nombre text, apellido text, edad integer, grupo text";
-        String queryTablaAsistencias = "create table asistencias (id)";
+        String queryTablaAlumnos = "create table alumnos (nombre text, apellido text, edad integer, grupo text)";
+        String queryTablaAsistencias = "create table asistencias (id_alumno integer, fecha text)";
+        String queryTablaPagos = "create table pagos (id_alumno integer, mes text, monto integer)";
+        BDD.execSQL(queryTablaAlumnos);
+        BDD.execSQL(queryTablaAsistencias);
+        BDD.execSQL(queryTablaPagos);
     }
 
     @Override
